@@ -1,5 +1,5 @@
 #!/bin/bash
 
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 
 php-fpm
