@@ -15,7 +15,13 @@ RUN mv composer.phar /usr/local/bin/composer
 COPY run.sh /tmp/run.sh
 RUN chmod +x /tmp/run.sh
 
+ENV DOCKERIZE_VERSION v0.7.0
+RUN apt-get update \
+    && apt-get install -y wget \
+    && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin \
+    && apt-get autoremove -yqq --purge wget && rm -rf /var/lib/apt/lists/*
+
 EXPOSE 5173
 WORKDIR /var/www
 
-ENTRYPOINT ["/tmp/run.sh"]
+ENTRYPOINT ["dockerize", "-wait", "tcp://db:3306", "-timeout", "60s", "/tmp/run.sh"]
