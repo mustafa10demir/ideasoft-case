@@ -12,5 +12,10 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
+COPY run.sh /tmp/run.sh
+RUN chmod +x /tmp/run.sh
+
 EXPOSE 5173
 WORKDIR /var/www
+
+ENTRYPOINT ["/tmp/run.sh"]

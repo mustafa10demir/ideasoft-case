@@ -11,4 +11,12 @@ composer install
 ```shell
 docker-compose up --build
 ```
+- Veritabanı Migrate ve Seeding işlemleri, build sürecinde otomatik olarak gerçekleştirilir.
+
+
+
+
+
+
+
 
