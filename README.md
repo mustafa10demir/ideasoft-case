@@ -4,5 +4,11 @@
 
 Docker ile laravel projesini ayağa kaldırmak için;
 
-- ``` composer install  ```
-- ``` docker-compose up --build ```
+```shell
+composer install 
+```
+
+```shell
+docker-compose up --build
+```
+
