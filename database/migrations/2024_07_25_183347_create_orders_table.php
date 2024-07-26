@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create( 'orders', function ( Blueprint $table ) {
             $table->id();
             $table->unsignedBigInteger( 'customerId' );
-            $table->foreign( 'customerId' )->references( 'id' )->on( 'customers' );
+            $table->foreign( 'customerId' )->references( 'id' )->on( 'users' );
             $table->integer( 'total' );
             $table->timestamps();
         } );
