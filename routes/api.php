@@ -19,5 +19,6 @@ Route::middleware( [ 'jwtToken' ] )->group( function () {
      */
     Route::prefix( 'orders' )->group( function () {
         Route::get( '/list', [ OrderController::class, 'list' ] );
+        Route::post('/', [ OrderController::class, 'store' ]);
     } );
 } );

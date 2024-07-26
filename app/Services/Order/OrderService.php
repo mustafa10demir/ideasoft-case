@@ -3,7 +3,9 @@
 namespace App\Services\Order;
 
 use App\Repositories\Contracts\OrderRepositoryInterface;
+use Exception;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class OrderService
 {
@@ -45,5 +47,27 @@ class OrderService
         }
 
         return false;
+    }
+
+    /**
+     * @param $request
+     *
+     * @return bool
+     */
+    public function store( $request ): bool
+    {
+        try {
+            $order = $this->orderRepository->storeOrder( [
+                'customerId' => Auth::id(),
+                'total'      => $request->total ?? 0,
+            ] );
+            foreach ( $request->items as $item ) {
+                $this->orderRepository->storeOrderItem( $item, $order->id );
+            }
+
+            return true;
+        } catch ( Exception $e ) {
+            return false;
+        }
     }
 }
