@@ -4,7 +4,9 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\Product;
 use App\Repositories\Contracts\OrderRepositoryInterface;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class OrderRepository implements OrderRepositoryInterface
@@ -65,5 +67,47 @@ class OrderRepository implements OrderRepositoryInterface
         $order = Order::findOrFail( $id );
         $order->items()->delete();
         $order->delete();
+    }
+
+    /**
+     * Get Product For by ID
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getProductById( $id ): mixed
+    {
+        return Product::findOrFail( $id );
+    }
+
+    /**
+     * Product Stock Update
+     *
+     * @param $productId
+     * @param $quantity
+     *
+     * @return void
+     */
+    public function updateProductStock( $productId, $quantity ): void
+    {
+        $product        = $this->getProductById( $productId );
+        $product->stock = $product->stock - $quantity;
+        $product->save();
+    }
+
+    /**
+     * User Revenue Update
+     *
+     * @param $userId
+     * @param $revenue
+     *
+     * @return void
+     */
+    public function updateUserRevenue( $userId, $revenue ): void
+    {
+        $user          = User::findOrFail( $userId );
+        $user->revenue = $user->revenue + $revenue;
+        $user->save();
     }
 }

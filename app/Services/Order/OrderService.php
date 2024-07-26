@@ -27,7 +27,7 @@ class OrderService
     /**
      *  Get the list of orders.
      *
-     *  @return false|Collection
+     * @return false|Collection
      */
     public function list(): false|Collection
     {
@@ -58,9 +58,9 @@ class OrderService
      *
      * @param $request
      *
-     * @return bool
+     * @return bool | int
      */
-    public function store( $request ): bool
+    public function store( $request ): bool|int
     {
         try {
             $order = $this->orderRepository->storeOrder( [
@@ -68,7 +68,17 @@ class OrderService
                 'total'      => $request->total ?? 0,
             ] );
             foreach ( $request->items as $item ) {
+                $product = $this->orderRepository->getProductById( $item['productId'] );
+                if ( ! $product ) {
+                    return false;
+                }
+                if ( $product->stock < $item['quantity'] ) {
+                    return 3;
+                }
+
                 $this->orderRepository->storeOrderItem( $item, $order->id );
+                $this->orderRepository->updateProductStock( $product->id, $item['quantity'] );
+                $this->orderRepository->updateUserRevenue( Auth::id(), $request->total );
             }
 
             return true;

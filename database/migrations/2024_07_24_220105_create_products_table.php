@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('category')->references('id')->on('categories');
             $table->float('price');
             $table->integer('stock');
+            $table->timestamps();
         });
     }
 

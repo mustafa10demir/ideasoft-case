@@ -52,7 +52,15 @@ class OrderController extends Controller
      */
     public function store( StoreOrderRequest $request ): JsonResponse
     {
-        if ( $this->orderService->store( $request ) ) {
+        $storeOrder = $this->orderService->store( $request );
+
+        if ( $storeOrder === 3 ) {
+            return response()->json( [
+                'error' => 'products.stock',
+            ] );
+        }
+
+        if ( $storeOrder ) {
             return response()->json( [
                 'message' => 'Order created successfully',
             ] );

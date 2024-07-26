@@ -40,4 +40,34 @@ interface OrderRepositoryInterface
      * @return void
      */
     public function destroy( $id ): void;
+
+
+    /**
+     * Get Product For by ID
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getProductById( $id ): mixed;
+
+    /**
+     * Product Stock Update
+     *
+     * @param $productId
+     * @param $quantity
+     *
+     * @return void
+     */
+    public function updateProductStock( $productId, $quantity ): void;
+
+    /**
+     * User Revenue Update
+     *
+     * @param $userId
+     * @param $revenue
+     *
+     * @return void
+     */
+    public function updateUserRevenue( $userId, $revenue ): void;
 }
