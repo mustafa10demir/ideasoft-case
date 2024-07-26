@@ -37,9 +37,4 @@ class LoginController extends Controller
             'expires_in'   => auth()->factory()->getTTL() * 60,
         ] );
     }
-
-    public function test()
-    {
-        dd( 1 );
-    }
 }
