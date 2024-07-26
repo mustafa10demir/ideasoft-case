@@ -30,4 +30,13 @@ class OrderItems extends Model
         'created_at',
         'updated_at',
     ];
+
+
+    /**
+     * Get the order that owns the order item.
+     */
+    public function order()
+    {
+        return $this->belongsTo( Order::class, 'orderId' );
+    }
 }

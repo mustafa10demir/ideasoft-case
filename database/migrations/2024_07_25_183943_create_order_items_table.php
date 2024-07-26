@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign( 'orderId' )->references( 'id' )->on( 'orders' );
             $table->unsignedBigInteger( 'productId' );
             $table->foreign( 'productId' )->references( 'id' )->on( 'products' );
-            $table->integer( 'quantity' );
-            $table->integer( 'unitPrice' );
-            $table->integer( 'total' );
+            $table->float( 'quantity' );
+            $table->float( 'unitPrice' );
+            $table->float( 'total' );
             $table->timestamps();
         } );
     }

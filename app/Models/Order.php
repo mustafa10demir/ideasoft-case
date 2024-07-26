@@ -27,4 +27,12 @@ class Order extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * Get the order items for the order.
+     */
+    public function items()
+    {
+        return $this->hasMany( OrderItems::class, 'orderId' );
+    }
 }

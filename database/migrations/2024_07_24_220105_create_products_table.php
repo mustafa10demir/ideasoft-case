@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('category');
             $table->foreign('category')->references('id')->on('categories');
-            $table->integer('price');
+            $table->float('price');
             $table->integer('stock');
         });
     }
