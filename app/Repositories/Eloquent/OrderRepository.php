@@ -46,4 +46,16 @@ class OrderRepository implements OrderRepositoryInterface
             'total'     => $item['total'],
         ] );
     }
+
+    /**
+     * @param $id
+     *
+     * @return void
+     */
+    public function destroy( $id ): void
+    {
+        $order = Order::findOrFail( $id );
+        $order->items()->delete();
+        $order->delete();
+    }
 }

@@ -52,4 +52,22 @@ class OrderController extends Controller
             'error' => 'Order creation failed',
         ], 500 );
     }
+
+    /**
+     * @param int $id
+     *
+     * @return JsonResponse
+     */
+    public function destroy( int $id ): JsonResponse
+    {
+        if ( $this->orderService->destroy( $id ) ) {
+            return response()->json( [
+                'message' => 'Order deleted successfully',
+            ] );
+        }
+
+        return response()->json( [
+            'error' => 'Order deletion failed',
+        ], 500 );
+    }
 }

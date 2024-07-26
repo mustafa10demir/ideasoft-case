@@ -70,4 +70,20 @@ class OrderService
             return false;
         }
     }
+
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public function destroy( $id ): bool
+    {
+        try {
+            $this->orderRepository->destroy( $id );
+
+            return true;
+        } catch ( Exception $e ) {
+            return false;
+        }
+    }
 }

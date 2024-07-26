@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Contracts;
 
-use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
 
 interface OrderRepositoryInterface
@@ -26,4 +25,11 @@ interface OrderRepositoryInterface
      * @return void
      */
     public function storeOrderItem( $item, $orderId ): void;
+
+    /**
+     * @param $id
+     *
+     * @return void
+     */
+    public function destroy( $id ): void;
 }
