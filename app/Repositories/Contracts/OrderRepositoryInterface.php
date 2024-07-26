@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Collection;
 interface OrderRepositoryInterface
 {
     /**
+     * Get the list of orders.
+     *
      * @return Collection
      */
     public function list(): Collection;
 
     /**
+     * Store a newly created order in the database.
+     *
      * @param $data
      *
      * @return mixed
@@ -19,6 +23,8 @@ interface OrderRepositoryInterface
     public function storeOrder( $data ): mixed;
 
     /**
+     * Store a newly created order item in the database.
+     *
      * @param $item
      * @param $orderId
      *
@@ -27,6 +33,8 @@ interface OrderRepositoryInterface
     public function storeOrderItem( $item, $orderId ): void;
 
     /**
+     * Remove the specified order from the database.
+     *
      * @param $id
      *
      * @return void

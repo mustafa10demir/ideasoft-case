@@ -15,6 +15,8 @@ class OrderService
     private OrderRepositoryInterface $orderRepository;
 
     /**
+     *  OrderService constructor.
+     *
      * @param OrderRepositoryInterface $orderRepository
      */
     public function __construct( OrderRepositoryInterface $orderRepository )
@@ -23,7 +25,9 @@ class OrderService
     }
 
     /**
-     * @return false|Collection
+     *  Get the list of orders.
+     *
+     *  @return false|Collection
      */
     public function list(): false|Collection
     {
@@ -50,6 +54,8 @@ class OrderService
     }
 
     /**
+     * Store a newly created order in the database.
+     *
      * @param $request
      *
      * @return bool
@@ -72,6 +78,8 @@ class OrderService
     }
 
     /**
+     * Remove the specified order from the database.
+     *
      * @param $id
      *
      * @return bool

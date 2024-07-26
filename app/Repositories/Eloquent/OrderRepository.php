@@ -11,6 +11,8 @@ class OrderRepository implements OrderRepositoryInterface
 {
 
     /**
+     * Get the list of orders with their items.
+     *
      * @return Collection
      */
     public function list(): Collection
@@ -19,6 +21,8 @@ class OrderRepository implements OrderRepositoryInterface
     }
 
     /**
+     * Store a newly created order in the database.
+     *
      * @param $data
      *
      * @return mixed
@@ -31,6 +35,8 @@ class OrderRepository implements OrderRepositoryInterface
     }
 
     /**
+     * Store a newly created order item in the database.
+     *
      * @param $item
      * @param $orderId
      *
@@ -48,6 +54,8 @@ class OrderRepository implements OrderRepositoryInterface
     }
 
     /**
+     * Remove the specified order and its items from the database.
+     *
      * @param $id
      *
      * @return void

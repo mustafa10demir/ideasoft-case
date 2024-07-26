@@ -15,7 +15,9 @@ class OrderController extends Controller
     private OrderService $orderService;
 
     /**
-     * @param OrderService $orderService
+     * OrderController constructor.
+     *
+     * @param OrderService $orderService The service responsible for handling order-related operations.
      */
     public function __construct( OrderService $orderService )
     {
@@ -23,7 +25,11 @@ class OrderController extends Controller
     }
 
     /**
+     * Get the list of orders.
+     *
      * @return false|JsonResponse
+     * Returns a JSON response containing the list of orders if available,
+     * or a 204 No Content response if no orders are found.
      */
     public function list(): false|JsonResponse
     {
@@ -36,9 +42,13 @@ class OrderController extends Controller
     }
 
     /**
-     * @param StoreOrderRequest $request
+     **
+     * Store a newly created order in the database.
+     *
+     * @param StoreOrderRequest $request The request object containing order details.
      *
      * @return JsonResponse
+     * Returns a JSON response indicating success or failure of order creation.
      */
     public function store( StoreOrderRequest $request ): JsonResponse
     {
@@ -54,9 +64,12 @@ class OrderController extends Controller
     }
 
     /**
-     * @param int $id
+     * Remove the specified order from the database.
+     *
+     * @param int $id The ID of the order to be deleted.
      *
      * @return JsonResponse
+     * Returns a JSON response indicating success or failure of order deletion.
      */
     public function destroy( int $id ): JsonResponse
     {
