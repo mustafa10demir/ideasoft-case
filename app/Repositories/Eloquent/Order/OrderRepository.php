@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Repositories\Eloquent\Order;
 
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Product;
-use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Models\User;
+use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class OrderRepository implements OrderRepositoryInterface

@@ -2,7 +2,7 @@
 
 namespace App\Services\Order;
 
-use App\Repositories\Contracts\OrderRepositoryInterface;
+use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;

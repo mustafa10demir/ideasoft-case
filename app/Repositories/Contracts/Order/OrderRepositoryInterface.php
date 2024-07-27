@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace App\Repositories\Contracts\Order;
 
 use Illuminate\Database\Eloquent\Collection;
 
