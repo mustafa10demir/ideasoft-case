@@ -21,4 +21,26 @@ Postman api documentation : [https://documenter.getpostman.com/view/8787859/2sA3
 Postman Json File: [Download](https://raw.githubusercontent.com/mustafa10demir/ideasoft-case/main/IdeaSoftCase.postman_collection.json) 
 
 
+## İndirim Tanımlama
 
+İndirimler **offers**  tablosu ve **offer_discounts** tablosundan dinamik olarak gelir.
+
+Örneğin, belirtilen kategoriye ait ürünlerden toplam 1000 TL ve üzeri alışveriş yapan müşterilere %10 indirim sağlar.
+
+### offers tablosu:
+| Alan Adı   | Değer                     |
+|------------|---------------------------|
+| name       | 2_CATEGORY_1000_LIMIT_10_SALE |
+| total_price| 1000                      |
+| category_id| 2                         |
+
+### offer_discounts tablosu:
+| Alan Adı         | Değer |
+|------------------|-------|
+| percent_discount | 10    |
+| is_total         | 1     |
+
+
+## DB Designer
+
+<img src="https://raw.githubusercontent.com/mustafa10demir/ideasoft-case/main/DbDesign.png" width="100%">
