@@ -14,9 +14,11 @@ docker-compose up --build
 - Veritabanı Migrate ve Seeding işlemleri, build sürecinde otomatik olarak gerçekleştirilir.
 
 
+## API List
 
+Postman api documentation : [https://documenter.getpostman.com/view/8787859/2sA3kaBJwH ](https://documenter.getpostman.com/view/8787859/2sA3kaBJwH)
 
-
+Postman Json File: [Download](https://raw.githubusercontent.com/mustafa10demir/ideasoft-case/main/IdeaSoftCase.postman_collection.json) 
 
 
 
