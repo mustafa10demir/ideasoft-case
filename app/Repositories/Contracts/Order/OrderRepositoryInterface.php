@@ -70,4 +70,13 @@ interface OrderRepositoryInterface
      * @return void
      */
     public function updateUserRevenue( $userId, $revenue ): void;
+
+    /**
+     * Get Order for ID
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getOrderById( $id ): mixed;
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Discount\DiscountController;
 use App\Http\Controllers\Order\OrderController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,13 @@ Route::middleware( [ 'jwtToken' ] )->group( function () {
      */
     Route::prefix( 'orders' )->group( function () {
         Route::get( '/list', [ OrderController::class, 'list' ] );
-        Route::post('/', [ OrderController::class, 'store' ]);
-        Route::delete('/{id}', [ OrderController::class, 'destroy' ]);
+        Route::post( '/', [ OrderController::class, 'store' ] );
+        Route::delete( '/{id}', [ OrderController::class, 'destroy' ] );
     } );
+
+    /**
+     * Discount Api
+     */
+    Route::post( '/discount', [ DiscountController::class, 'getDiscount' ] );
+    
 } );

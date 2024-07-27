@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderItems extends Model
+class OfferDiscount extends Model
 {
     use HasFactory;
 
@@ -22,13 +22,10 @@ class OrderItems extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'orderId',
-        'productId',
-        'quantity',
-        'unitPrice',
-        'total',
-        'created_at',
-        'updated_at',
+        'offer_id',
+        'percent_discount',
+        'is_total',
+        'is_free_product_count',
     ];
 
 
@@ -37,11 +34,6 @@ class OrderItems extends Model
      */
     public function order()
     {
-        return $this->belongsTo( Order::class, 'orderId' );
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'productId');
+        return $this->belongsTo( Offer::class, 'offer_id' );
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\OrderRepositoryInterface;
-use App\Repositories\Eloquent\OrderRepository;
+use App\Repositories\Contracts\Order\DiscountRepositoryInterface;
+use App\Repositories\Contracts\Order\OrderRepositoryInterface;
+use App\Repositories\Eloquent\Discount\DiscountRepository;
+use App\Repositories\Eloquent\Order\OrderRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind( OrderRepositoryInterface::class, OrderRepository::class );
+        $this->app->bind( DiscountRepositoryInterface::class, DiscountRepository::class );
     }
 
     /**

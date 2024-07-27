@@ -6,7 +6,7 @@ use App\Models\Order;
 use App\Models\OrderItems;
 use Illuminate\Database\Seeder;
 
-class Orders extends Seeder
+class OrdersSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -2,6 +2,7 @@
 
 namespace App\Services\Order;
 
+use App\Models\Order;
 use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use Exception;
 use Illuminate\Support\Collection;
@@ -103,5 +104,17 @@ class OrderService
         } catch ( Exception $e ) {
             return false;
         }
+    }
+
+    /**
+     * Get Order For ID
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getOrderById( $id ): mixed
+    {
+        return $this->orderRepository->getOrderById( $id );
     }
 }

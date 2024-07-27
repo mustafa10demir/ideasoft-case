@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderItems extends Model
+class Offer extends Model
 {
     use HasFactory;
 
@@ -22,26 +22,20 @@ class OrderItems extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'orderId',
-        'productId',
-        'quantity',
-        'unitPrice',
-        'total',
+        'name',
+        'total_price',
+        'category_id',
+        'product_limit_count',
+        'category_product_limit_count',
         'created_at',
         'updated_at',
     ];
 
-
     /**
-     * Get the order that owns the order item.
+     * Get the order items for the order.
      */
-    public function order()
+    public function discount()
     {
-        return $this->belongsTo( Order::class, 'orderId' );
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'productId');
+        return $this->hasMany( OfferDiscount::class, 'offer_id' );
     }
 }

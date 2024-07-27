@@ -110,4 +110,18 @@ class OrderRepository implements OrderRepositoryInterface
         $user->revenue = $user->revenue + $revenue;
         $user->save();
     }
+
+    /**
+     * Get Order For ID
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getOrderById( $id ): mixed
+    {
+        return Order::where( [
+            'id' => $id,
+        ] )->with( 'items.product' )->first();
+    }
 }
