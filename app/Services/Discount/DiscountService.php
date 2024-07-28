@@ -2,7 +2,7 @@
 
 namespace App\Services\Discount;
 
-use App\Repositories\Discount\DiscountRepository;
+use App\Contracts\Discount\DiscountRepositoryInterface;
 use App\Services\Order\OrderService;
 
 class DiscountService
@@ -13,9 +13,9 @@ class DiscountService
     private OrderService $orderService;
 
     /**
-     * @var DiscountRepository
+     * @var DiscountRepositoryInterface
      */
-    private DiscountRepository $discountRepository;
+    private DiscountRepositoryInterface $discountRepository;
 
     protected float $totalDiscount = 0;
     protected array $discounts;
@@ -24,9 +24,9 @@ class DiscountService
      * Discount Service Construct
      *
      * @param OrderService $orderService
-     * @param DiscountRepository $discountRepository
+     * @param DiscountRepositoryInterface $discountRepository
      */
-    public function __construct( OrderService $orderService, DiscountRepository $discountRepository )
+    public function __construct( OrderService $orderService, DiscountRepositoryInterface $discountRepository )
     {
         $this->orderService       = $orderService;
         $this->discountRepository = $discountRepository;

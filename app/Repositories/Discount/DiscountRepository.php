@@ -2,11 +2,12 @@
 
 namespace App\Repositories\Discount;
 
+use App\Contracts\Discount\DiscountRepositoryInterface;
 use App\Models\Offer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
-class DiscountRepository
+class DiscountRepository implements DiscountRepositoryInterface
 {
     /**
      * Get All Offer List

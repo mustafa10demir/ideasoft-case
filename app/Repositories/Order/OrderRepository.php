@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Order;
 
+use App\Contracts\Order\OrderRepositoryInterface;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Product;
@@ -9,7 +10,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
-class OrderRepository
+class OrderRepository implements OrderRepositoryInterface
 {
 
     /**

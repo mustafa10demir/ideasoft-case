@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\Order\DiscountRepositoryInterface;
-use App\Repositories\Contracts\Order\OrderRepositoryInterface;
+use App\Contracts\Discount\DiscountRepositoryInterface;
+use App\Contracts\Order\OrderRepositoryInterface;
 use App\Repositories\Discount\DiscountRepository;
 use App\Repositories\Order\OrderRepository;
 use Illuminate\Support\ServiceProvider;

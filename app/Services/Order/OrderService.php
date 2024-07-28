@@ -2,7 +2,7 @@
 
 namespace App\Services\Order;
 
-use App\Repositories\Order\OrderRepository;
+use App\Contracts\Order\OrderRepositoryInterface;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class OrderService
 {
     /**
-     * @var OrderRepository
+     * @var OrderRepositoryInterface
      */
-    private OrderRepository $orderRepository;
+    private OrderRepositoryInterface $orderRepository;
 
     /**
      *  OrderService constructor.
      *
-     * @param OrderRepository $orderRepository
+     * @param OrderRepositoryInterface $orderRepository
      */
-    public function __construct( OrderRepository $orderRepository )
+    public function __construct( OrderRepositoryInterface $orderRepository )
     {
         $this->orderRepository = $orderRepository;
     }
