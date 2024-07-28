@@ -40,6 +40,16 @@ Postman Json File: [Download](https://raw.githubusercontent.com/mustafa10demir/i
 | percent_discount | 10    |
 | is_total         | 1     |
 
+## Kullanılan Teknolojiler
+
+* Laravel11
+* Docker
+* jwilder/dockerize CI/CD support
+* JTW Token
+* Redis Cache
+
+## Design Pattern
+Repository Design Pattern
 
 ## DB Designer
 
