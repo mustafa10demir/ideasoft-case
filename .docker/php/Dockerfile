@@ -7,6 +7,8 @@ RUN apt-get update \
   && apt-get install -y build-essential zlib1g-dev default-mysql-client curl gnupg procps vim git unzip libzip-dev libpq-dev \
   && docker-php-ext-install zip pdo_mysql pdo_pgsql pgsql
 
+RUN pecl install redis && docker-php-ext-enable redis
+
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
