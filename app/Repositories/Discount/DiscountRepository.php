@@ -4,6 +4,7 @@ namespace App\Repositories\Discount;
 
 use App\Models\Offer;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class DiscountRepository
 {
@@ -14,7 +15,9 @@ class DiscountRepository
      */
     public function getAllOffer(): Collection
     {
-        return Offer::all();
+        return Cache::remember( 'all_offers', 600, function () {
+            return Offer::all();
+        } );
     }
 
     /**
@@ -26,8 +29,8 @@ class DiscountRepository
      */
     public function getOfferDiscount( $offerId ): mixed
     {
-        return Offer::where( [
-            'id' => $offerId,
-        ] )->with( 'discount' )->first();
+        return Cache::remember( "offer_discount_{$offerId}", 600, function () use ( $offerId ) {
+            return Offer::where( [ 'id' => $offerId ] )->with( 'discount' )->first();
+        } );
     }
 }

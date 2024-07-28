@@ -19,9 +19,9 @@ class OrderRepository
      */
     public function list(): Collection
     {
-        return Cache::remember('orders_list', 600, function () {
-            return Order::with('items')->get();
-        });
+        return Cache::remember( 'orders_list', 600, function () {
+            return Order::with( 'items' )->get();
+        } );
     }
 
     /**
@@ -33,8 +33,9 @@ class OrderRepository
      */
     public function storeOrder( $data ): mixed
     {
-        $order = Order::create($data);
-        Cache::forget('orders_list');
+        $order = Order::create( $data );
+        Cache::forget( 'orders_list' );
+
         return $order;
     }
 
@@ -55,7 +56,7 @@ class OrderRepository
             'unitPrice' => $item['unitPrice'],
             'total'     => $item['total'],
         ] );
-        Cache::forget('orders_list');
+        Cache::forget( 'orders_list' );
     }
 
     /**
@@ -70,7 +71,7 @@ class OrderRepository
         $order = Order::findOrFail( $id );
         $order->items()->delete();
         $order->delete();
-        Cache::forget('orders_list');
+        Cache::forget( 'orders_list' );
     }
 
     /**
@@ -82,9 +83,9 @@ class OrderRepository
      */
     public function getProductById( $id ): mixed
     {
-        return Cache::remember("product_{$id}", 600, function () use ($id) {
-            return Product::findOrFail($id);
-        });
+        return Cache::remember( "product_{$id}", 600, function () use ( $id ) {
+            return Product::findOrFail( $id );
+        } );
     }
 
     /**
@@ -100,7 +101,7 @@ class OrderRepository
         $product        = $this->getProductById( $productId );
         $product->stock = $product->stock - $quantity;
         $product->save();
-        Cache::forget("product_{$productId}");
+        Cache::forget( "product_{$productId}" );
     }
 
     /**
@@ -127,8 +128,8 @@ class OrderRepository
      */
     public function getOrderById( $id ): mixed
     {
-        return Cache::remember("order_{$id}", 600, function () use ($id) {
-            return Order::where(['id' => $id])->with('items.product')->first();
-        });
+        return Cache::remember( "order_{$id}", 600, function () use ( $id ) {
+            return Order::where( [ 'id' => $id ] )->with( 'items.product' )->first();
+        } );
     }
 }
