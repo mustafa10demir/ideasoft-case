@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Repositories\Eloquent\Discount;
+namespace App\Repositories\Discount;
 
 use App\Models\Offer;
-use App\Models\OfferDiscount;
-use App\Repositories\Contracts\Order\DiscountRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
-class DiscountRepository implements DiscountRepositoryInterface
+class DiscountRepository
 {
     /**
      * Get All Offer List

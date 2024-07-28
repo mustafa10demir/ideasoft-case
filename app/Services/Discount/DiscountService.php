@@ -2,7 +2,7 @@
 
 namespace App\Services\Discount;
 
-use App\Repositories\Contracts\Order\DiscountRepositoryInterface;
+use App\Repositories\Discount\DiscountRepository;
 use App\Services\Order\OrderService;
 
 class DiscountService
@@ -13,9 +13,9 @@ class DiscountService
     private OrderService $orderService;
 
     /**
-     * @var DiscountRepositoryInterface
+     * @var DiscountRepository
      */
-    private DiscountRepositoryInterface $discountRepository;
+    private DiscountRepository $discountRepository;
 
     protected float $totalDiscount = 0;
     protected array $discounts;
@@ -24,9 +24,9 @@ class DiscountService
      * Discount Service Construct
      *
      * @param OrderService $orderService
-     * @param DiscountRepositoryInterface $discountRepository
+     * @param DiscountRepository $discountRepository
      */
-    public function __construct( OrderService $orderService, DiscountRepositoryInterface $discountRepository )
+    public function __construct( OrderService $orderService, DiscountRepository $discountRepository )
     {
         $this->orderService       = $orderService;
         $this->discountRepository = $discountRepository;
@@ -52,7 +52,7 @@ class DiscountService
                 "orderId"         => $request->orderId,
                 "discounts"       => $this->discounts,
                 "totalDiscount"   => (string) $this->totalDiscount,
-                "discountedTotal" => (string) ($order->total - $this->totalDiscount),
+                "discountedTotal" => (string) ( $order->total - $this->totalDiscount ),
             ];
         }
 
@@ -183,7 +183,7 @@ class DiscountService
         $this->discounts[] = [
             "discountReason" => $name,
             "discountAmount" => (string) $amount,
-            "subtotal"       => (string) ($total - $this->totalDiscount),
+            "subtotal"       => (string) ( $total - $this->totalDiscount ),
         ];
 
     }
