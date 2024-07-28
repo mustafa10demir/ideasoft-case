@@ -9,12 +9,6 @@ class OrderItems extends Model
 {
     use HasFactory;
 
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
